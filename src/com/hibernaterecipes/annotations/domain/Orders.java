@@ -1,0 +1,89 @@
+/**
+ * 
+ */
+package com.hibernaterecipes.annotations.domain;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Parent;
+
+
+
+/**
+ * @author Guruzu
+ *
+ */
+@Entity
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Table	(name="ORDERS")
+public class Orders {
+	
+	private Long id;
+	private Contact weekdayContact;
+	private Contact holidayContact;
+	/**
+	 * @return the id
+	 */
+	@Id
+	@GeneratedValue (strategy=GenerationType.AUTO)
+	@Column (name="ID")
+	public Long getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	/**
+	 * @return the weekdayContact
+	 */
+	@Embedded 
+	public Contact getWeekdayContact() {
+		return weekdayContact;
+	}
+	/**
+	 * @param weekdayContact the weekdayContact to set
+	 */
+	public void setWeekdayContact(Contact weekdayContact) {
+		this.weekdayContact = weekdayContact;
+	}
+	/**
+	 * @return the holidayContact
+	 */
+	@Embedded
+	@AttributeOverrides ({@AttributeOverride(name="recipient",column=@Column(name="HOLIDAY_RECIPIENT")),
+		@AttributeOverride(name="phone",column=@Column(name="HOLIDAY_PHONE")),
+		@AttributeOverride(name="address",column=@Column(name="HOLIDAY_ADDRESS"))})
+	
+	public Contact getHolidayContact() {
+		return holidayContact;
+	}
+	/**
+	 * @param holidayContact the holidayContact to set
+	 */
+	public void setHolidayContact(Contact holidayContact) {
+		this.holidayContact = holidayContact;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Orders [holidayContact=" + holidayContact + ", id=" + id
+				+ ", weekdayContact=" + weekdayContact + "]";
+	}
+	
+	
+
+}

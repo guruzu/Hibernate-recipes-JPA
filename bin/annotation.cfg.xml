@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
+        <property name="connection.url">jdbc:derby://localhost:1527/BookShopDB</property>
+        <property name="connection.username">book</property>
+        <property name="connection.password">book</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.DerbyDialect</property>
+		
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup --><!--
+        <property name="hbm2ddl.auto">create</property> 
+
+        --><mapping class="com.hibernaterecipes.annotations.domain.Book"/>
+        <mapping class="com.hibernaterecipes.annotations.domain.BookCh2"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Orders"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Orders_3_3"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Contact_3_3"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Contact"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Disc_1"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.AudioDisc_1"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.VideoDisc_1"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Disc_2"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.AudioDisc_2"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.VideoDisc_2"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.AudioDisc_3"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.AudioDisc_4"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.VideoDisc_4"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Disc_4"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.OrdersCh4_4"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.OrdersCh4_5"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Address"/>
+		<mapping class="com.hibernaterecipes.annotations.domain.Address"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Address5_1"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Customer5_1"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Address5_2"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Customer5_2"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Address5_3"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Customer5_3"/>
+    	<mapping class="com.hibernaterecipes.annotations.dao.ch5.Book_5_1"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Publisher"/>
+    	<mapping class="com.hibernaterecipes.annotations.dao.ch5.Book_5_2"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch5.Publisher5_2"/>
+		<!--<mapping class="com.hibernaterecipes.annotations.dao.ch6.Book_6_1"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch6.Book_6_2"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch6.Book_6_21"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch6.Book_6_3"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch6.Book_6_4"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch6.Book_6_5"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Book7_1"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Chapter7_1"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Book7_3"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Chapter7_3"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Book7_4"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Chapter7_4"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Book7_41"/>
+		<mapping class="com.hibernaterecipes.annotations.dao.ch7.Chapter7_41"/>
+    --></session-factory>
+	<named-native-query name="Book.by.isbn">
+		<query>from Book where isbn = ?</query>
+	</named-native-query>
+</hibernate-configuration>
